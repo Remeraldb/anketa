@@ -15,6 +15,7 @@ function submitForm() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const termsAccepted = document.getElementById('terms').checked;
+    const avatarSrc = document.getElementById('avatar').src;
     
     if (!name || !email) {
         alert('Будь ласка, заповніть всі поля.');
@@ -25,5 +26,15 @@ function submitForm() {
         return;
     }
     
-    alert(`Дякуємо, ${name}! Ваш email: ${email} збережено.`);
+    document.getElementById('popup-message').innerText = `Дякуємо, ${name}! Ваш email: ${email} збережено.`;
+    const popupAvatar = document.getElementById('popup-avatar');
+    if (avatarSrc) {
+        popupAvatar.src = avatarSrc;
+        popupAvatar.style.display = 'block';
+    }
+    document.getElementById('popup').style.display = 'flex';
+}
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
 }
