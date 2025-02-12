@@ -3,7 +3,9 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            document.getElementById('avatar').src = e.target.result;
+            const avatar = document.getElementById('avatar');
+            avatar.src = e.target.result;
+            avatar.style.display = 'block';
         }
         reader.readAsDataURL(file);
     }
@@ -12,9 +14,16 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 function submitForm() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    if (name && email) {
-        alert(`Дякуємо, ${name}! Ваш email: ${email} збережено.`);
-    } else {
+    const termsAccepted = document.getElementById('terms').checked;
+    
+    if (!name || !email) {
         alert('Будь ласка, заповніть всі поля.');
+        return;
     }
+    if (!termsAccepted) {
+        alert('Ви повинні погодитися з умовами використання.');
+        return;
+    }
+    
+    alert(`Дякуємо, ${name}! Ваш email: ${email} збережено.`);
 }

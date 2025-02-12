@@ -9,10 +9,16 @@
 <body>
     <div class="form-container">
         <h2>Анкета</h2>
-        <img id="avatar" class="avatar" src="default-avatar.png" alt="Аватар">
+        <div class="avatar-container">
+            <img id="avatar" class="avatar" src="" alt="Аватар" style="display: none;">
+        </div>
         <input type="file" id="fileInput" accept="image/*">
         <input type="text" id="name" placeholder="Ім'я">
         <input type="email" id="email" placeholder="Email">
+        <div class="terms-container">
+            <input type="checkbox" id="terms">
+            <label for="terms">Я погоджуюсь з <a href="#">умовами використання</a></label>
+        </div>
         <button onclick="submitForm()">Надіслати</button>
     </div>
     <script src="script.js"></script>
